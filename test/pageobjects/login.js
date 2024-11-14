@@ -21,7 +21,7 @@ class Login extends SauceBasePage {
 
 
 
-    async validLogin (){
+    async loginAccess (){
         for (let user of validUsers) {
 
             await this.inputUsername.setValue(user.username);
