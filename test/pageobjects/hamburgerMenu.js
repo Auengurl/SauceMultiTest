@@ -38,13 +38,23 @@ class HamburgerMenu extends SauceBasePage {
         await this.hamburgerMenuClose.click();
     }
 
-    async hamburgerAllItems (){
-        await this.hamburgerMenuBtn.click();
+    async hamMenuAllItems (){
         await this.inventoryItem.click();
+        await this.hamburgerMenuBtn.click();
         await this.hamburgerMenuAllItems.click();
         await expect(SecurityPage.HomePage).toBeExisting;
     }
 
+    async hamMenuAbout () {
+        await this.hamburgerMenuBtn.click();
+        await this.hamburgerMenuAbout.click();
+        await expect(SecurityPage.AboutPage).toBeExisting;
+    }
+
+    async hamMenuLogout () {
+        await this.hamburgerMenuBtn.click();
+        await this.hamburgerMenuLogOut.click();
+    }
 
 }
 
