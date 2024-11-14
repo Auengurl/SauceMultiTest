@@ -3,7 +3,7 @@ import { browser } from '@wdio/globals'
 import SauceBasePage from './basePage.js';
 
 
-class Security extends SauceBasePage {
+class SecurityPage extends SauceBasePage {
 
     
     get HomePage () {
@@ -11,5 +11,5 @@ class Security extends SauceBasePage {
     }
 }
 
-export default new Security();
+export default new SecurityPage();
 

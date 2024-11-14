@@ -1,4 +1,5 @@
 import SauceBasePage from './basePage.js';
+import SecurityPage from './security.js';
 
 
 class HamburgerMenu extends SauceBasePage {
@@ -27,15 +28,21 @@ class HamburgerMenu extends SauceBasePage {
         return $('#reset_sidebar_link');
     }
 
+    get inventoryItem () {
+        return $('.inventory_item_name ');
+    }
 
 
     async hamburgerMenuSelect (){
         await this.hamburgerMenu.click();
+        await this.hamburgerMenuClose.click();
     }
 
     async hamburgerAllItems (){
         await this.hamburgerMenu.click();
-        await this.hamburgerMenuClose.click();
+        await this.inventoryItem.click();
+        await this.hamburgerMenuAllItems.click();
+        await expect(SecurityPage.HomePage).toBeExisting;
     }
 
 
