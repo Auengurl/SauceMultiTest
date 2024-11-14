@@ -4,7 +4,7 @@ import SecurityPage from './security.js';
 
 class HamburgerMenu extends SauceBasePage {
 
-    get hamburgerMenu () {
+    get hamburgerMenuBtn () {
         return $('#react-burger-menu-btn');
     }
 
@@ -34,12 +34,12 @@ class HamburgerMenu extends SauceBasePage {
 
 
     async hamburgerMenuSelect (){
-        await this.hamburgerMenu.click();
+        await this.hamburgerMenuBtn.click();
         await this.hamburgerMenuClose.click();
     }
 
     async hamburgerAllItems (){
-        await this.hamburgerMenu.click();
+        await this.hamburgerMenuBtn.click();
         await this.inventoryItem.click();
         await this.hamburgerMenuAllItems.click();
         await expect(SecurityPage.HomePage).toBeExisting;

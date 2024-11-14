@@ -1,4 +1,3 @@
-export const standard_user = {username: 'standard_user', password: 'secret_sauce'};
+export const standardUser = {username: 'standard_user', password: 'secret_sauce'};
 
-
-
+export default standardUser;
