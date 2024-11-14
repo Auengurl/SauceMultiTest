@@ -32,6 +32,10 @@ class HamburgerMenu extends SauceBasePage {
         return $('.inventory_item_name ');
     }
 
+    get addItemCartBtn () {
+        return $('#add-to-cart-sauce-labs-backpack');
+    }
+
 
     async hamburgerMenuSelect (){
         await this.hamburgerMenuBtn.click();
@@ -54,6 +58,13 @@ class HamburgerMenu extends SauceBasePage {
         await this.hamburgerMenuBtn.click();
         await this.hamburgerMenuLogOut.click();
         
+    }
+
+    async hamMenuReset () {
+        await this.hamburgerMenuBtn.click();
+        await this.addItemCartBtn.click();
+        await this.hamburgerMenuReset.click();
+        console.log('App reset');
     }
 
 }

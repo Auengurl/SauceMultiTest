@@ -32,6 +32,13 @@ describe('hamburger menu application', () => {
             await hamburgerMenu.hamburgerMenuSelect();
             await hamburgerMenu.hamMenuLogout();
         })
+
+        it('reset app state in the hamburger menu', async () => {
+            await Login.openBasePage();
+            await Login.loginAccess();
+            await hamburgerMenu.hamburgerMenuSelect();
+            await hamburgerMenu.hamMenuReset(); 
+        })
    
      });
 
