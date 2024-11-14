@@ -2,7 +2,7 @@ import { $ } from '@wdio/globals'
 import { expect } from '@wdio/globals'
 import SauceBasePage from './basePage.js';
 import Security from './security.js';
-import { validUsers, locked_out_user, invalidPassword, invalidUsername} from './users.js';
+import standard_user from './users.js';
 
 
 class Login extends SauceBasePage {
@@ -22,7 +22,7 @@ class Login extends SauceBasePage {
 
 
     async loginAccess (){
-        for (let user of validUsers) {
+        for (let user of standard_user) {
 
             await this.inputUsername.setValue(user.username);
             console.log(`Testing with username: ${user.username}`);
