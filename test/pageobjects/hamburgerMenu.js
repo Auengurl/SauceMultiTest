@@ -48,12 +48,12 @@ class HamburgerMenu extends SauceBasePage {
     async hamMenuAbout () {
         await this.hamburgerMenuBtn.click();
         await this.hamburgerMenuAbout.click();
-        await expect(SecurityPage.AboutPage).toBeExisting;
     }
 
     async hamMenuLogout () {
         await this.hamburgerMenuBtn.click();
         await this.hamburgerMenuLogOut.click();
+        
     }
 
 }

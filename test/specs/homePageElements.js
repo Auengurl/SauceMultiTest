@@ -30,6 +30,7 @@ describe('hamburger menu application', () => {
             await Login.openBasePage();
             await Login.loginAccess();
             await hamburgerMenu.hamburgerMenuSelect();
+            await hamburgerMenu.hamMenuLogout();
         })
    
      });

@@ -10,9 +10,7 @@ class SecurityPage extends SauceBasePage {
         return browser.url(`https://www.saucedemo.com/inventory.html`);
     }
 
-    get AboutPage () {
-        return browser.url(`https://saucelabs.com/`);
-    }
+    
 }
 
 export default new SecurityPage();
