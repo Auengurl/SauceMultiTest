@@ -28,7 +28,7 @@ class HamburgerMenu extends SauceBasePage {
         return $('#reset_sidebar_link');
     }
 
-    get inventoryItem () {
+    get inventoryItemName () {
         return $('.inventory_item_name ');
     }
 
@@ -43,7 +43,7 @@ class HamburgerMenu extends SauceBasePage {
     }
 
     async hamMenuAllItems (){
-        await this.inventoryItem.click();
+        await this.inventoryItemName.click();
         await this.hamburgerMenuBtn.click();
         await this.hamburgerMenuAllItems.click();
         await expect(SecurityPage.HomePage).toBeExisting;

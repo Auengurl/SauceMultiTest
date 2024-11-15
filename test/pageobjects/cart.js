@@ -33,12 +33,12 @@ class CartArea extends SauceBasePage {
         return $('#continue');
     }
 
-    get inventoryItem () {
-        return $('.inventory_item_name ');
-    }
+    // get inventoryItem () {
+    //     return $('.inventory_item_name ');
+    // }
 
     get addItemCartBtn () {
-        return $('#add-to-cart-sauce-labs-backpack');
+        return $('#add-to-cart-sauce-labs-bike-light');
     }
 
     get finishBtn () {
@@ -50,12 +50,39 @@ class CartArea extends SauceBasePage {
     }
 
         // async cartRunAll() {
-       async cartOpen (){
+        
+        
+        async accessInventoryPage () {
             await Login.openBasePage();
-            await Login.loginAccess();
+            await expect(browser.url('https://www.saucedemo.com/'));
+            await Login.loginAccess(); 
+        }
+
+       async cartOpen (){
+            
             await this.shoppingCartBtn.click();
+            await expect(browser.url('https://www.saucedemo.com/cart.html'));
             
         };
+
+        async addItemToCart () {
+            await this.accessInventoryPage();
+            await this.addItemCartBtn.click(); 
+            await expect(this.shoppingCartBtn);
+             
+        }
+
+        
+
+        async removeItemsFromCart () {
+            await this.accessInventoryPage();
+            await this.addItemToCart();
+            await this.cartOpen();
+            await this.removeBtn.click();
+            
+        }
+
+        
 
     
 

@@ -22,9 +22,8 @@ class Login extends SauceBasePage {
 
 
     async loginAccess (){
-
+            
             await this.inputUsername.setValue(standardUser.username);
-            console.log(`Testing with username: ${standardUser.username}`);
             await this.inputPassword.setValue(standardUser.password);
             await this.btnSubmit.click();
             await expect(Security.HomePage).toBeExisting;
