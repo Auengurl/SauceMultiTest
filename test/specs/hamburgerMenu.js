@@ -12,11 +12,14 @@ describe('hamburger menu application', () => {
 
         });
 
-        it('select all items from hamburger menu ', async () => {
-            await Login.openBasePage();
-            await Login.loginAccess();
+        it('select all items from hamburger menu ', async () => {  
             await HamburgerMenu.hamMenuAllItems();
     
+        })
+
+        it('logout from the hamburger menu', async () => {
+            await hamburgerMenu.hamburgerMenuSelect();
+            await hamburgerMenu.hamMenuLogout();
         })
 
         it('opens the all about section from the hamburger menu', async () => {
@@ -24,20 +27,7 @@ describe('hamburger menu application', () => {
             await Login.loginAccess();
             await hamburgerMenu.hamburgerMenuSelect();
             await hamburgerMenu.hamMenuAbout();
-        })
-
-        it('logout from the hamburger menu', async () => {
-            await Login.openBasePage();
-            await Login.loginAccess();
-            await hamburgerMenu.hamburgerMenuSelect();
-            await hamburgerMenu.hamMenuLogout();
-        })
-
-        it('reset app state in the hamburger menu', async () => {
-            await Login.openBasePage();
-            await Login.loginAccess();
-            await hamburgerMenu.hamburgerMenuSelect();
-            await hamburgerMenu.hamMenuReset(); 
+            
         })
    
      });

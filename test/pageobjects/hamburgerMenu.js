@@ -52,6 +52,7 @@ class HamburgerMenu extends SauceBasePage {
     async hamMenuAbout () {
         await this.hamburgerMenuBtn.click();
         await this.hamburgerMenuAbout.click();
+        await expect(browser.url('https://saucelabs.com/'));
     }
 
     async hamMenuLogout () {
