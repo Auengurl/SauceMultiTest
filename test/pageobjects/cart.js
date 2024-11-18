@@ -74,7 +74,7 @@ class CartArea extends SauceBasePage {
             
             await this.shoppingCartBtn.click();
             await expect(browser.url('https://www.saucedemo.com/cart.html'));
-            // await browser.pause(3000);
+            await browser.pause(3000);
             
         };
 
@@ -86,7 +86,13 @@ class CartArea extends SauceBasePage {
              
         }
 
+        async removeItem () {
+            await this.removeBtn.click();
+        }
+         
         async addMultipleItemsToCart () {
+
+            await this.removeItem();
             const items = this.addMultipleItems;
                 for (const item of items) {
                 await item.click();
