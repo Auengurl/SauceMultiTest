@@ -1,6 +1,7 @@
 import SauceBasePage from './basePage.js';
-import SecurityPage from './security.js';
+
 import Login from './login.js';
+
 
 
 class CartArea extends SauceBasePage {
@@ -26,7 +27,7 @@ class CartArea extends SauceBasePage {
     }
 
     get removeBtn() {
-        return $('.btn btn_secondary btn_small cart_button');
+        return $(`//button[contains(@id, 'remove')]`);
     }
 
     get continueBtn () {
@@ -38,7 +39,7 @@ class CartArea extends SauceBasePage {
     // }
 
     get addItemCartBtn () {
-        return $('#add-to-cart-sauce-labs-bike-light');
+        return $(`//button[contains(@id, 'add-to-cart')]`);
     }
 
     get finishBtn () {
@@ -62,6 +63,7 @@ class CartArea extends SauceBasePage {
             
             await this.shoppingCartBtn.click();
             await expect(browser.url('https://www.saucedemo.com/cart.html'));
+            // await browser.pause(3000);
             
         };
 
@@ -74,13 +76,13 @@ class CartArea extends SauceBasePage {
 
         
 
-        async removeItemsFromCart () {
-            await this.accessInventoryPage();
-            await this.addItemToCart();
-            await this.cartOpen();
-            await this.removeBtn.click();
+        // async removeItemsFromCart () {
+        //     await this.accessInventoryPage();
+        //     await this.addItemToCart();
+        //     await this.cartOpen();
+        //     await this.removeBtn.click();
             
-        }
+        // }
 
         
 
