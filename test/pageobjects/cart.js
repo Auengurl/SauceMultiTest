@@ -43,7 +43,14 @@ class CartArea extends SauceBasePage {
     }
 
     get addMultipleItems () {
-        return $$('button.add-to-cart');
+        return [
+            $('#add-to-cart-sauce-labs-backpack'),
+            $('#add-to-cart-sauce-labs-bike-light'),
+            $('#add-to-cart-sauce-labs-bolt-t-shirt'),
+            $('#add-to-cart-sauce-labs-fleece-jacket'),
+            $('#add-to-cart-sauce-labs-onesie'),
+            $(`button[data-test="add-to-cart-test.allthethings()-t-shirt-(red)"]`)
+        ];
     }
 
     get finishBtn () {
@@ -80,9 +87,11 @@ class CartArea extends SauceBasePage {
         }
 
         async addMultipleItemsToCart () {
-            await this.accessInventoryPage();
-            await this.addMultipleItems.click();
-            await expect(this.shoppingCartBtn);
+            const items = this.addMultipleItems;
+                for (const item of items) {
+                await item.click();
+}
+            await expect(this.shoppingCartBtn).toBeDisplayed();
             await browser.pause(3000);
         }
 
