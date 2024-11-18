@@ -42,6 +42,10 @@ class CartArea extends SauceBasePage {
         return $(`//button[contains(@id, 'add-to-cart')]`);
     }
 
+    get addMultipleItems () {
+        return $$('button.add-to-cart');
+    }
+
     get finishBtn () {
         return $('#finish');
     }
@@ -71,7 +75,15 @@ class CartArea extends SauceBasePage {
             await this.accessInventoryPage();
             await this.addItemCartBtn.click(); 
             await expect(this.shoppingCartBtn);
+            await browser.pause(3000);
              
+        }
+
+        async addMultipleItemsToCart () {
+            await this.accessInventoryPage();
+            await this.addMultipleItems.click();
+            await expect(this.shoppingCartBtn);
+            await browser.pause(3000);
         }
 
         

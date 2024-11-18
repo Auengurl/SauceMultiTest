@@ -6,19 +6,22 @@ import CartArea from '../pageobjects/cart.js';
 
 describe('cart page and components', () => {
     // open the cart from the cart page
-    it('cart page opens from cart icon on inventory page', async () => {
-        await CartArea.accessInventoryPage();
-        await CartArea.cartOpen();
-    })
+    // it('cart page opens from cart icon on inventory page', async () => {
+    //     await CartArea.accessInventoryPage();
+    //     await CartArea.cartOpen();
+    // })
 
     // Can add something to the cart - 
         // -add several things to the cart (where the number adds up)
-    // it('add item to cart shows in cart icon', async () => {
+    it('add item to cart shows in cart icon', async () => {
             
-    //         await CartArea.addItemToCart();
-    //     })
+            await CartArea.addItemToCart();
+    
+        })
      // -add several things to the cart (where the number adds up)
-
+    // it('add multiple items to the chart to see if the icon changes', async () => {
+    //     await CartArea.addMultipleItemsToCart();
+    // })
 
      
     // it('remove item from cart page', async () => {
