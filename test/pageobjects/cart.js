@@ -53,6 +53,17 @@ class CartArea extends SauceBasePage {
         ];
     }
 
+    get removeMultipleItems () {
+        return [
+            $('#remove-sauce-labs-backpack'),
+            $('#remove-sauce-labs-bike-light'),
+            $('#remove-sauce-labs-bolt-t-shirt'),
+            $('#remove-sauce-labs-fleece-jacket'),
+            $('#remove-sauce-labs-onesie'),
+            $(`button[data-test="remove-test.allthethings()-t-shirt-(red)"]`)
+        ];
+    }
+
     get finishBtn () {
         return $('#finish');
     }
@@ -103,13 +114,22 @@ class CartArea extends SauceBasePage {
 
         
 
-        // async removeItemsFromCart () {
-        //     await this.accessInventoryPage();
-        //     await this.addItemToCart();
-        //     await this.cartOpen();
-        //     await this.removeBtn.click();
+        async removeItemsFromCart () {
             
-        // }
+            await this.cartOpen();
+            await this.removeBtn.click();
+            
+        }
+
+        async removeMultItemsFromPage () {
+            await this.continueShoppingBtn.click();
+            
+            const items = this.removeMultipleItems;
+                for (const item of items) {
+                await item.click();
+}
+            await expect(this.shoppingCartBtn).toBeDisplayed();
+        }
 
         
 
