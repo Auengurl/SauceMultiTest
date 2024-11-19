@@ -51,37 +51,16 @@ describe('cart page and components', () => {
         await CartArea.continueShoppingSite();
     })
 
-    it('when checkout page information left blank should create error warning', async () => {
-        await
-    })
-
     it('cancel the order from checkoutfield page', async () => {
-
+        await CartArea.cancelCheckoutFromCheckoutInfoPage();
     })
 
-    it('checkout fields using valid information', async () => {
-        
+
+    it('checkout fields using valid information to complete checkout', async () => {
+        await CartArea.validCheckoutProcess();
     })
 
-    it('cancel the order from checkout overview page', async () => {
-        
-    })
-
-    it('checkout fields using blank spaces', async () => {
-        
-    })
-
-    it('checkout fields using combination of letters and numbers', async () => {
-        
-    })
-
-    it('finish checkout process successfully', async () => {
-        
-    })
-
-    it('back home button returns us back to homepage', async () => {
-        
-    })
+   
 
 })
 

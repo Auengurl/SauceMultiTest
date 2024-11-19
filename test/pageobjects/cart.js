@@ -5,6 +5,8 @@ import SauceBasePage from './basePage.js';
 import Login from './login.js';
 import SecurityPage from './security.js';
 import HamburgerMenu from './hamburgerMenu.js';
+import { validCustomer } from './users.js';
+import { postalCode } from './users.js';
 
 
 
@@ -74,6 +76,18 @@ class CartArea extends SauceBasePage {
         return $('#back-to-products');
     }
 
+    get inputFirstName () {
+        return $('#first-name');
+    }
+
+    get inputLastName () {
+        return $('#last-name');
+    }
+
+    get inputPostalCode () {
+        return $('#postal-code');
+    }
+
         
         
         
@@ -92,12 +106,14 @@ class CartArea extends SauceBasePage {
         };
 
         async addItemToCart () {
-            await this.accessInventoryPage();
-            // await this.addItemCartBtn.click(); 
+            
+            await expect(SecurityPage.HomePage).toBeExisting;
+            await this.addItemCartBtn.click(); 
             await expect(this.shoppingCartBtn);
             
              
         }
+
 
         async removeItem () {
             await this.removeBtn.click();
@@ -151,14 +167,35 @@ class CartArea extends SauceBasePage {
         }
 
         async continueShoppingSite () {
-            await CartArea.continueShoppingBtn.click();
+            await this.continueShoppingBtn.click();
             await expect(SecurityPage.HomePage);
         }
 
-        
-        async blankCheckout () {
+        async cancelCheckoutFromCheckoutInfoPage () {
+            await this.cartOpen();
+            await this.goToCheckoutPage();
+            await this.cancelBtn.click();
+            await expect(browser.url('https://www.saucedemo.com/cart.html'));
+            await HamburgerMenu.hamMenuLogout();
 
-            await CartArea.continueBtn.click();
+        }
+
+    
+
+        async validCheckoutProcess () {
+            await Login.openBasePage();
+            await Login.loginAccess();
+            await this.addItemToCart();
+            await this.cartOpen();
+            await this.goToCheckoutPage();
+            await this.inputFirstName.setValue(validCustomer.fname);
+            await this.inputLastName.setValue(validCustomer.lname);
+            await this.inputPostalCode.setValue(postalCode.pCode);
+            await this.continueBtn.click();
+            await this.finishBtn.click();
+            await expect(browser.url('https://www.saucedemo.com/checkout-complete.html'));
+            await HamburgerMenu.hamMenuLogout();
+
         }
     
 
