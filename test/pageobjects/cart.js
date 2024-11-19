@@ -1,6 +1,11 @@
-import SauceBasePage from './basePage.js';
+import { browser } from '@wdio/globals';
+import { $ } from '@wdio/globals';
 
+import SauceBasePage from './basePage.js';
 import Login from './login.js';
+import SecurityPage from './security.js';
+import HamburgerMenu from './hamburgerMenu.js';
+
 
 
 
@@ -34,9 +39,6 @@ class CartArea extends SauceBasePage {
         return $('#continue');
     }
 
-    // get inventoryItem () {
-    //     return $('.inventory_item_name ');
-    // }
 
     get addItemCartBtn () {
         return $(`//button[contains(@id, 'add-to-cart')]`);
@@ -72,7 +74,7 @@ class CartArea extends SauceBasePage {
         return $('#back-to-products');
     }
 
-        // async cartRunAll() {
+        
         
         
         async accessInventoryPage () {
@@ -85,15 +87,15 @@ class CartArea extends SauceBasePage {
             
             await this.shoppingCartBtn.click();
             await expect(browser.url('https://www.saucedemo.com/cart.html'));
-            await browser.pause(3000);
+            
             
         };
 
         async addItemToCart () {
             await this.accessInventoryPage();
-            await this.addItemCartBtn.click(); 
+            // await this.addItemCartBtn.click(); 
             await expect(this.shoppingCartBtn);
-            await browser.pause(3000);
+            
              
         }
 
@@ -109,12 +111,12 @@ class CartArea extends SauceBasePage {
                 await item.click();
 }
             await expect(this.shoppingCartBtn).toBeDisplayed();
-            await browser.pause(3000);
+            
         }
 
         
 
-        async removeItemsFromCart () {
+        async removeItemFromCart () {
             
             await this.cartOpen();
             await this.removeBtn.click();
@@ -123,6 +125,7 @@ class CartArea extends SauceBasePage {
 
         async removeMultItemsFromPage () {
             await this.continueShoppingBtn.click();
+            await this.addItemCartBtn.click();
             
             const items = this.removeMultipleItems;
                 for (const item of items) {
@@ -131,8 +134,32 @@ class CartArea extends SauceBasePage {
             await expect(this.shoppingCartBtn).toBeDisplayed();
         }
 
-        
+        async removeItemFromCartPage () {
+            await this.addItemCartBtn.click();
+            await this.addMultipleItemsToCart();
+            await this.removeItemFromCart();
+        }
 
+        async goToCheckoutPage () {
+            await this.checkoutBtn.click();
+            await expect(browser.url('https://www.saucedemo.com/checkout-step-one.html'));
+        }
+
+        async cancelCheckout () {
+            await this.cancelBtn.click();
+            await expect(browser.url('https://www.saucedemo.com/cart.html'));
+        }
+
+        async continueShoppingSite () {
+            await CartArea.continueShoppingBtn.click();
+            await expect(SecurityPage.HomePage);
+        }
+
+        
+        async blankCheckout () {
+
+            await CartArea.continueBtn.click();
+        }
     
 
 
